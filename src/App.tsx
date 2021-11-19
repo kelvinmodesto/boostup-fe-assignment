@@ -1,6 +1,8 @@
 import type { FunctionComponent } from 'react';
 import { useEffect, useState } from 'react';
 
+import { ProvinceListResponse, CityListResponse } from '@report-types/services-province';
+
 import { Box } from '@material-ui/core';
 
 import useStyles from 'App.styles';
@@ -11,8 +13,8 @@ import { useFetchStatesList, useFetchReport } from 'services/reports/list';
 const App: FunctionComponent = () => {
   const classes = useStyles();
 
-  const [statesList, setStatesList] = useState<any>([]);
-  const [reportList, setReportList] = useState<any>(undefined);
+  const [statesList, setStatesList] = useState<ProvinceListResponse>([]);
+  const [reportList, setReportList] = useState<CityListResponse>(undefined);
   const [filters, setFilters] = useState<{state?: string; date?: String;}>({ state: 'California', date: '2021-01-01'});
 
   const fetchStatesList = useFetchStatesList();
