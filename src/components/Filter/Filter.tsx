@@ -1,4 +1,4 @@
-import type { FunctionComponent } from 'react';
+import type { ChangeEvent, FunctionComponent } from 'react';
 
 import { ProvinceListResponse, ProvinceResponse } from '@report-types/services-province';
 
@@ -16,11 +16,11 @@ type Props = {
 const FilterForm: FunctionComponent<Props> = ({ statesList, applyDate, applyState }) => {
   const classes = useStyles();
   
-  const handleChangeDate = (date: any) => {
+  const handleChangeDate = (date: ChangeEvent<any>) => {
     applyDate(date.target.value);
   }
 
-  const handleChangeState = (state: any) => {
+  const handleChangeState = (state: ChangeEvent<any>) => {
     applyState(state.target.innerText);
   }
 

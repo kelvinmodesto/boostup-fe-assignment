@@ -5,11 +5,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     marginTop: theme.spacing(6),
     alignItems: 'center',
+    marginBottom: theme.spacing(3),
     justifyContent: 'center',
-    flexDirection: 'column'
   },
   date: {
-    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(3),
     width: 220
   }
 }));

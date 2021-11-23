@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'react';
 import { useEffect, useState } from 'react';
 
-import { ProvinceListResponse, CityListResponse } from '@report-types/services-province';
+import { ProvinceResponse, ProvinceListResponse, CityListResponse } from '@report-types/services-province';
 
 import { Box } from '@material-ui/core';
 
@@ -22,13 +22,15 @@ const App: FunctionComponent = () => {
 
   useEffect(() => {
     if (fetchStatesList.data) {
-      setStatesList(fetchStatesList.data.data.filter((it: any) => !it.province.includes(',')));
+      setStatesList(fetchStatesList.data.data.filter((it: ProvinceResponse) => !it.province.includes(',')));
     }
   }, [fetchStatesList.data]);
   
   useEffect(() => {
-    if (fetchReport.data && fetchReport.response.ok) {
+    if (fetchReport.data && fetchReport.response.ok && fetchReport.data.data[0].region.cities.length) {
       setReportList(fetchReport.data.data[0].region.cities);
+    } else {
+      setReportList(undefined);
     }
   }, [fetchReport]);
 
